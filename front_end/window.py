@@ -23,14 +23,15 @@ class Window(object):
         pygame.init()
         pygame.display.set_caption("Press ESC to quit")
 
-        self.width      = 3 * height // 2
-        self.height     = height
+        self.width  = 3 * height // 2
+        self.height = height
+
         self.screen     = pygame.display.set_mode((self.width, self.height), pygame.DOUBLEBUF)
         self.background = pygame.Surface(self.screen.get_size()).convert()
-        self.background.fill((200, 200, 200))
+        self.background.fill((128, 128, 200))
 
         self.info_ground = infoground.InfoGround(self.screen,
-                                                 self.height // 2,
+                                                 self.width,
                                                  self.height, fps)
 
     def run(self):
@@ -48,9 +49,9 @@ class Window(object):
                     if event.key == pygame.K_ESCAPE:
                         running = False
 
+            self.screen.blit(self.background, (0, 0))
             self.info_ground.draw_tech_info()
             pygame.display.flip()
-            self.screen.blit(self.background, (0, 0))
 
         pygame.quit()
 
