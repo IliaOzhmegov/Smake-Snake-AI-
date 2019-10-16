@@ -7,7 +7,7 @@ from front_end import window
 
 
 def main():
-    window.SnakeWindow().run()
+    window.Window().run()
     print("ffffffffffffffffffffffffffffffffff")
 
 
