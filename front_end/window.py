@@ -33,12 +33,18 @@ class Window(object):
         self.info_ground = infoground.InfoGround(self.screen,
                                                  self.width,
                                                  self.height, fps)
+        self.play_ground = playground.BackGround(self.screen,
+                                                 self.width,
+                                                 self.height)
 
     def run(self):
         """
         The mainloop
 
         """
+
+        self.play_ground.draw_lines()
+        pygame.display.flip()
 
         running = True
         while running:
@@ -49,7 +55,7 @@ class Window(object):
                     if event.key == pygame.K_ESCAPE:
                         running = False
 
-            self.screen.blit(self.background, (0, 0))
+            # self.screen.blit(self.background, (0, 0))
             self.info_ground.draw_tech_info()
             pygame.display.flip()
 

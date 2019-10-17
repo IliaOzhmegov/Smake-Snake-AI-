@@ -4,24 +4,32 @@ from front_end.playground import snake
 
 class BackGround(object):
 
-    def __init__(self, x_pos, y_pos, size, pace=20, colour=(0, 30, 30)):
-        self.x_pos = x_pos
-        self.y_pos = y_pos
-        self.size = size
-        self.pace = pace
-        self.colour = colour
+    def __init__(self, main_screen, width, height):
+        self.width = (width // 3) * 2
+        self.height = height
 
-    def draw_lines(self, background):
+        self.x_pos = width // 3
+        self.y_pos = 0
 
-        print("Size of the playground: ", self.size // self.pace)
-        for i in range(self.pace, self.size, self.pace):
-            pygame.draw.line(self.surface, self.colour, (i, 0), (i, self.size))
-            pygame.draw.line(self.surface, self.colour, (0, i), (self.size, i))
+        self.pace = 20
+        self.psize = height // 20
+        self.colour = (20, 80, 200)
+
+        self.window_screen = main_screen
+        self.surface = pygame.Surface((self.width, self.height))
+
+        self.background = pygame.Surface(self.surface.get_size()).convert()
+        self.background.fill((0, 0, 0))
+
+    def draw_lines(self):
+
+        print("Size of the playground: ", self.psize)
+        for i in range(self.pace, self.width, self.pace):
+            pygame.draw.line(self.surface, self.colour, (i, 0), (i, self.width))
+            pygame.draw.line(self.surface, self.colour, (0, i), (self.width, i))
 
         self.surface = self.surface.convert()
-        background.blit(self.surface, (self.x_pos, self.y_pos))
-
-        return self.size // self.pace
+        self.window_screen.blit(self.surface, (self.x_pos, self.y_pos))
 
 
 class Cell(object):
