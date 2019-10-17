@@ -33,7 +33,7 @@ class Window(object):
         self.info_ground = infoground.InfoGround(self.screen,
                                                  self.width,
                                                  self.height, fps)
-        self.play_ground = playground.BackGround(self.screen,
+        self.play_ground = playground.PlayGround(self.screen,
                                                  self.width,
                                                  self.height)
 
@@ -43,8 +43,7 @@ class Window(object):
 
         """
 
-        self.play_ground.draw_lines()
-        pygame.display.flip()
+        self.play_ground.draw_background()
 
         running = True
         while running:

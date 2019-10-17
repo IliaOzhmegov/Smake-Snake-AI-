@@ -22,7 +22,7 @@ class InfoGround(object):
         _, self.fh = self.font.size("AAA")
 
     def draw_tech_info(self):
-        milliseconds = self.clock.tick(self.fps)
+        milliseconds: float = self.clock.tick(self.fps)
         self.playtime += milliseconds / 1000.0
 
         self.window_screen.blit(self.background, (0, 0))

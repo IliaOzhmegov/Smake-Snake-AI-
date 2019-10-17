@@ -2,7 +2,7 @@ import pygame
 from front_end.playground import snake
 
 
-class BackGround(object):
+class PlayGround(object):
 
     def __init__(self, main_screen, width, height):
         self.width = (width // 3) * 2
@@ -10,6 +10,39 @@ class BackGround(object):
 
         self.x_pos = width // 3
         self.y_pos = 0
+
+        self.pace = 20
+        self.psize = height // 20
+
+        self.window_screen = main_screen
+
+        self.background = BackGround(self.window_screen,
+                                     self.width, self.height,
+                                     self.x_pos, self.y_pos)
+
+    def draw_background(self):
+        self.background.draw_lines()
+
+    # def draw(self, background):
+    #     head_pos = self.snake.get_head_pos()
+    #     left = self.csize * head_pos.pos_x
+    #     top  = self.csize * head_pos.pos_y
+    #
+    #     pygame.draw.rect(self.surface, self.snake.get_colour(),
+    #                      (left, left, self.csize, self.csize))
+    #
+    #     self.surface = self.surface.convert()
+    #     background.blit(self.surface, (self.len * self.csize/2, 0))
+
+
+class BackGround(object):
+
+    def __init__(self, main_screen, width, height, x_pos, y_pos):
+        self.width  = width
+        self.height = height
+
+        self.x_pos = x_pos
+        self.y_pos = y_pos
 
         self.pace = 20
         self.psize = height // 20
@@ -39,31 +72,5 @@ class Cell(object):
         self.pos_y = position[1]
         self.psize = psize
 
-
-class PlayGround(object):
-
-    def __init__(self, background, width, height, pace):
-        self.x_pos = width // 3
-        self.y_pos = 0
-        self.size = height
-        self.pace = pace
-        self.surface = pygame.Surface((self.size, self.size))
-
-        self.bg = BackGround(self.x_pos, self.y_pos, self.size, self.pace)
-        # self.snake = snake.Snake(start)
-
-    def draw_background(self):
-        return bg.draw_lines(self.background)
-
-    def draw(self, background):
-        head_pos = self.snake.get_head_pos()
-        left = self.csize * head_pos.pos_x
-        top  = self.csize * head_pos.pos_y
-
-        pygame.draw.rect(self.surface, self.snake.get_colour(),
-                         (left, left, self.csize, self.csize))
-
-        self.surface = self.surface.convert()
-        background.blit(self.surface, (self.len * self.csize/2, 0))
 
 
