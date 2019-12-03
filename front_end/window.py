@@ -54,8 +54,8 @@ class Window(object):
                     if event.key == pygame.K_ESCAPE:
                         running = False
 
-            # self.screen.blit(self.background, (0, 0))
             self.info_ground.draw_tech_info()
+            self.play_ground.draw_foo()
             pygame.display.flip()
 
         pygame.quit()

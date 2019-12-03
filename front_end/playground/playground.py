@@ -1,4 +1,5 @@
 import pygame
+import random
 from front_end.playground import snake
 
 
@@ -18,10 +19,19 @@ class PlayGround(object):
 
         self.background = BackGround(self.window_screen,
                                      self.width, self.height,
-                                     self.x_pos, self.y_pos)
+                                     self.x_pos, self.y_pos,
+                                     self.pace)
+        self.foreground = ForeGround(self.window_screen,
+                                     self.width, self.height,
+                                     self.x_pos, self.y_pos,
+                                     self.pace)
 
     def draw_background(self):
         self.background.draw_lines()
+
+    def draw_foo(self):
+        self.foreground.draw_foo()
+
 
     # def draw(self, background):
     #     head_pos = self.snake.get_head_pos()
@@ -37,15 +47,15 @@ class PlayGround(object):
 
 class BackGround(object):
 
-    def __init__(self, main_screen, width, height, x_pos, y_pos):
+    def __init__(self, main_screen, width, height, x_pos, y_pos, pace):
         self.width  = width
         self.height = height
 
         self.x_pos = x_pos
         self.y_pos = y_pos
 
-        self.pace = 20
-        self.psize = height // 20
+        self.pace = pace
+        self.psize = height // self.pace
         self.colour = (20, 80, 200)
 
         self.window_screen = main_screen
@@ -63,6 +73,47 @@ class BackGround(object):
 
         self.surface = self.surface.convert()
         self.window_screen.blit(self.surface, (self.x_pos, self.y_pos))
+
+
+class ForeGround(object):
+
+    def __init__(self, main_screen, width, height, x_pos, y_pos, pace):
+        self.width  = width
+        self.height = height
+
+        self.x_pos = x_pos
+        self.y_pos = y_pos
+
+        self.pace  = pace
+        self.psize = height // self.pace
+        self.colour = (20, 200, 80)
+
+        self.window_screen = main_screen
+        self.surface = pygame.Surface((self.width, self.height))
+
+        self.foreground = pygame.Surface(self.surface.get_size())
+        self.foreground.set_colorkey((0, 0, 0))
+
+        self.foo_x = 0
+        self.foo_y = 0
+
+    def draw_foo(self):
+        # self.foo_x += 1
+        # self.foo_y += 1
+        #
+        # if self.foo_x > self.width + self.x_pos:
+        #     self.foo_x = 0
+        #     self.foo_x += random.randint(0, 50)
+        # if self.foo_y > self.height + self.y_pos:
+        #     self.foo_y = 0
+        #     self.foo_y += random.randint(0, 50)
+
+        pygame.draw.circle(self.foreground, self.colour,
+                           (0, 0),
+                           self.psize // 2)
+        self.foreground = self.foreground.convert_alpha()
+        self.window_screen.blit(self.foreground, (self.x_pos + self.foo_x,
+                                                  self.y_pos + self.foo_y))
 
 
 class Cell(object):
