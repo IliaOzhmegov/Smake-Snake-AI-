@@ -42,11 +42,13 @@ class Position:
 
 
 class Snake(object):
+    Collision = "Injuring itself"
+    Problems = {"Collision": "Injuring itself"}
 
-    def __init__(self, position=(0, 0)):
+    def __init__(self, length=4, position=(0, 0)):
         self.position = Position(position)
         self.speed = Direction()
-        self.length = 4
+        self.length = length
 
         self.body = [self.position + Position((i, 0)) for i in range(self.length)]
 
@@ -56,6 +58,12 @@ class Snake(object):
     def __move_body(self):  # TODO: it must be a private method
         self.body.pop()
         self.body.insert(0, self.position)
+
+    def __is_injuring_itself(self, new_position):
+        segments = [segment.pos for segment in self.body]
+        if new_position.get_pos() in segments:
+            return True
+        return False
 
     def get_speed(self):
         return self.speed.dir
@@ -69,7 +77,13 @@ class Snake(object):
         return self.position.pos
 
     def move(self):
-        self.position = self.position + Position(self.speed.get_dir())
+        new_position = self.position + Position(self.speed.get_dir())
+
+        if self.__is_injuring_itself(new_position):
+            return Snake.Collision
+
+        self.position = new_position
         self.__move_body()
+
 
 

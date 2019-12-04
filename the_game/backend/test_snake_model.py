@@ -122,6 +122,22 @@ class TestSnake(TestCase):
             for cell in s.get_body():
                 print(cell.pos)
 
+    def test_collision(self):
+        s = Snake(length=10)
+
+        def n_moves_to(di, n):
+            s.turn(di)
+            for i in range(n):
+                if s.move() == Snake.Collision:
+                    assert s.position.get_pos() == (2, 1)
+
+        n_moves_to('rt', 2)
+        n_moves_to('dn', 2)
+        n_moves_to('lt', 5)
+
+
+
+
 
 
 
