@@ -6,5 +6,5 @@ install:
   - pip install pygame
   - pip install unittest
 # command to run tests
-script:
-  - coverage run the_game/backend/test_snake_model.py
+#script:
+#  - coverage run the_game/backend/test_snake_model.py
