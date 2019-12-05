@@ -1,12 +1,47 @@
+from random import randint
+
+
 class Playground(object):
     Size = (20, 20)
+    Rows = Size[0]
+    Cols = Size[1]
+    Length = Rows * Cols
 
     def __init__(self, size=Size):
         self.size = size
         self.borders = [(-1, i) for i in range(self.size[1])]        # top
         self.borders += [(size[0], i) for i in range(self.size[1])]  # bottom
-        self.borders += [(i, -1) for i in range(self.size[1])]       # left
-        self.borders += [(i, size[0]) for i in range(self.size[1])]  # right
+        self.borders += [(i, -1) for i in range(self.size[0])]       # left
+        self.borders += [(i, size[0]) for i in range(self.size[0])]  # right
+
+    def convert_index(self, ind):  # TODO: ind starts with 0
+        rows = ind // self.size[0]
+        cols = ind % self.size[1]
+        return rows, cols
+
+    def get_index(self, pos):
+        rows = pos[0]
+        cols = pos[1]
+        return rows*self.Cols + cols
+
+
+class Food:
+    def __init__(self):
+        self.position = Position((0, 0))
+        self.rows = Playground.Size[0]
+        self.cols = Playground.Size[1]
+
+    def change_pos(self, snake_body, pg):
+        set_choices = list(range(Playground.Length))
+        set_snake = [Playground.get_index(pg, i.get_pos()) for i in snake_body]
+        for segment in set_snake:
+            set_choices.remove(segment)
+
+        r_index = randint(0, len(set_choices))
+        self.position = Position(Playground.convert_index(pg, r_index))
+
+    def get_pos(self):
+        return self.position.pos
 
 
 class Direction:
@@ -63,14 +98,24 @@ class Snake(object):
         self.length = length
         self.body = [self.position + Position((i, 0)) for i in range(self.length)]
 
-        self.borders = Playground().borders
+        self.pg = Playground()
+        self.borders = self.pg.borders
+        self.food = Food()
+
+    def __change_food_pos(self):
+        self.food.change_pos(self.get_body(), self.pg)
 
     def get_body(self):
         return self.body
 
     def __move_body(self):  # TODO: it must be a private method
-        self.body.pop()
         self.body.insert(0, self.position)
+
+        if self.position.get_pos() == self.food.get_pos():
+            self.__change_food_pos()
+            return
+
+        self.body.pop()
 
     def __is_injuring_itself(self, new_position):
         segments = [segment.pos for segment in self.body]

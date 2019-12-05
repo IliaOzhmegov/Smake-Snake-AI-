@@ -1,8 +1,9 @@
-import pytest
 from unittest import TestCase
+
 from .snake_model import Snake
 from .snake_model import Position
 from .snake_model import Playground
+from .snake_model import Food
 
 
 class TestSnake(TestCase):
@@ -163,6 +164,9 @@ class TestSnake(TestCase):
 
         n_moves_to('up', 100)
 
+    def test_snake_main(self):
+        s = Snake()
+
 
 class TestPlayground(TestCase):
     def test_init(self):
@@ -178,6 +182,29 @@ class TestPlayground(TestCase):
 
         assert (0, 20) in p.borders
         assert (19, 20) in p.borders
+
+
+class TestFood(TestCase):
+    def test_change_pos(self):
+        s = Snake()
+        f = Food()
+        f.change_pos(s.get_body())
+
+        assert f.get_pos()[0] < Playground.Size[0]
+        assert f.get_pos()[1] < Playground.Size[1]
+        assert f.get_pos()[0] >= 0
+        assert f.get_pos()[1] >= 0
+
+    def test_index_funcs(self):
+        f = Food()
+        p = Playground()
+
+        point1 = (1, 1)
+        index1 = Playground.get_index(p, point1)
+        assert index1 == (p.Rows + 2) - 1
+        assert Playground.convert_index(p, index1) == point1
+
+
 
 
 
