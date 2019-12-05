@@ -2,9 +2,14 @@ import pytest
 from unittest import TestCase
 from .snake_model import Snake
 from .snake_model import Position
+from .snake_model import Playground
 
 
 class TestSnake(TestCase):
+    def test_init(self):
+        s = Snake()
+        assert s.position.pos == (Playground.Size[0] / 2, Playground.Size[1] / 2)
+
     def test_get_speed_and_turn(self):
         s = Snake()
         assert s.get_speed() == (-1, 0)
@@ -37,6 +42,9 @@ class TestSnake(TestCase):
     def test_move(self):
         s = Snake()
 
+        x_shift = Playground.Size[1] // 2
+        y_shift = Playground.Size[0] // 2
+
         def move_n_cells(n, dest_x, dest_y):
             for i in range(1, n):
                 s.move()
@@ -46,19 +54,22 @@ class TestSnake(TestCase):
         n = 100
 
         s.turn('up')
-        move_n_cells(n, 0, -99)
+        move_n_cells(n, x_shift, 0)
 
         s.turn('rt')
-        move_n_cells(n, 99, -99)
+        move_n_cells(n, Playground.Size[0] - 1, 0)
 
         s.turn('dn')
-        move_n_cells(n, 99, 0)
+        move_n_cells(n, Playground.Size[0] - 1, Playground.Size[0] - 1)
 
         s.turn('lt')
-        move_n_cells(n, 0, 0)
+        move_n_cells(n, 0, Playground.Size[0] - 1)
 
     def test_get_body(self):
         s = Snake()
+
+        x_shift = Playground.Size[1] // 2
+        y_shift = Playground.Size[0] // 2
 
         def print_body(s):
             print('----------')
@@ -71,14 +82,14 @@ class TestSnake(TestCase):
                 s.move()
                 # print_body(s)
 
-            assert s.get_position() == (dest_y, dest_x)
+            assert s.get_position() == (dest_y + y_shift, dest_x + x_shift)
 
             i = 0
             j = 0
             for segment in s.get_body():
                 if print_flag:
                     print(segment.pos, "i: ", i, "j: ", j)
-                assert segment.pos == (dest_y - i, dest_x - j)
+                assert segment.pos == (dest_y - i + y_shift, dest_x - j + y_shift)
                 i += direction[0]
                 j += direction[1]
 
@@ -102,10 +113,10 @@ class TestSnake(TestCase):
             s2.move()
 
         s2_body = s2.get_body()
-        assert s2_body[0].pos == (-1, -2)
-        assert s2_body[1].pos == (-1, -1)
-        assert s2_body[2].pos == (-1, 0)
-        assert s2_body[3].pos == (0, 0)
+        assert s2_body[0].pos == (-1 + y_shift, -2 + x_shift)
+        assert s2_body[1].pos == (-1 + y_shift, -1 + x_shift)
+        assert s2_body[2].pos == (-1 + y_shift, 0 + x_shift)
+        assert s2_body[3].pos == (0 + y_shift, 0 + x_shift)
 
 
 
@@ -122,21 +133,51 @@ class TestSnake(TestCase):
             for cell in s.get_body():
                 print(cell.pos)
 
-    def test_collision(self):
+    def test_self_collision(self):
         s = Snake(length=10)
+
+        x_shift = Playground.Size[1] // 2
+        y_shift = Playground.Size[0] // 2
 
         def n_moves_to(di, n):
             s.turn(di)
             for i in range(n):
-                if s.move() == Snake.Collision:
-                    assert s.position.get_pos() == (2, 1)
+                if s.move() == Snake.self_collision:
+                    assert s.position.get_pos() == (2 + y_shift, 1 + x_shift)
 
         n_moves_to('rt', 2)
         n_moves_to('dn', 2)
         n_moves_to('lt', 5)
 
+    def test_wall_collision(self):
+        s = Snake(length=20)
+
+        x_shift = Playground.Size[1] // 2
+        y_shift = Playground.Size[0] // 2
+
+        def n_moves_to(di, n):
+            s.turn(di)
+            for i in range(n):
+                if s.move() == Snake.wall_collision:
+                    assert s.position.get_pos() == (0, x_shift)
+
+        n_moves_to('up', 100)
 
 
+class TestPlayground(TestCase):
+    def test_init(self):
+        p = Playground()
+        assert (-1, 0) in p.borders
+        assert (-1, 19) in p.borders
+
+        assert (20, 0) in p.borders
+        assert (20, 19) in p.borders
+
+        assert (0, -1) in p.borders
+        assert (19, -1) in p.borders
+
+        assert (0, 20) in p.borders
+        assert (19, 20) in p.borders
 
 
 

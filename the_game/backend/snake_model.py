@@ -1,6 +1,12 @@
 class Playground(object):
-    def __init__(self, size):
+    Size = (20, 20)
+
+    def __init__(self, size=Size):
         self.size = size
+        self.borders = [(-1, i) for i in range(self.size[1])]        # top
+        self.borders += [(size[0], i) for i in range(self.size[1])]  # bottom
+        self.borders += [(i, -1) for i in range(self.size[1])]       # left
+        self.borders += [(i, size[0]) for i in range(self.size[1])]  # right
 
 
 class Direction:
@@ -10,8 +16,8 @@ class Direction:
     rt = (0, 1)
     Direction = {'up': up, 'dn': dn, 'lt': lt, 'rt': rt}
 
-    def __init__(self, dir='up'):
-        self.dir = Direction.Direction[dir]
+    def __init__(self, direc='up'):
+        self.dir = Direction.Direction[direc]
 
     def __add__(self, other):
         return self.dir[0] + other.dir[0], self.dir[1] + other.dir[1]
@@ -37,20 +43,27 @@ class Position:
         x = self.pos[1] - other.pos[1]
         return Position(origin=(y, x))
 
+    def __truediv__(self, other: int):
+        y = self.pos[0] // other
+        x = self.pos[1] // other
+        return Position(origin=(y, x))
+
     def get_pos(self):
         return self.pos
 
 
 class Snake(object):
-    Collision = "Injuring itself"
-    Problems = {"Collision": "Injuring itself"}
+    self_collision = "Injuring itself"
+    wall_collision = "Wall collision"
 
-    def __init__(self, length=4, position=(0, 0)):
-        self.position = Position(position)
+    def __init__(self, length=4, position=Playground.Size):
+        self.position = Position(position) / 2
         self.speed = Direction()
-        self.length = length
 
+        self.length = length
         self.body = [self.position + Position((i, 0)) for i in range(self.length)]
+
+        self.borders = Playground().borders
 
     def get_body(self):
         return self.body
@@ -65,13 +78,18 @@ class Snake(object):
             return True
         return False
 
+    def __is_colliding_wall(self, new_position):
+        if new_position.get_pos() in self.borders:
+            return True
+        return False
+
     def get_speed(self):
         return self.speed.dir
 
     def turn(self, new_dir):
-        new_speed = self.speed + Direction(dir=new_dir)
+        new_speed = self.speed + Direction(direc=new_dir)
         if any(new_speed) != 0:
-            self.speed = Direction(dir=new_dir)
+            self.speed = Direction(direc=new_dir)
 
     def get_position(self):
         return self.position.pos
@@ -80,7 +98,10 @@ class Snake(object):
         new_position = self.position + Position(self.speed.get_dir())
 
         if self.__is_injuring_itself(new_position):
-            return Snake.Collision
+            return Snake.self_collision
+
+        if self.__is_colliding_wall(new_position):
+            return Snake.wall_collision
 
         self.position = new_position
         self.__move_body()
