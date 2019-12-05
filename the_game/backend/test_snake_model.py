@@ -167,6 +167,20 @@ class TestSnake(TestCase):
     def test_snake_main(self):
         s = Snake()
 
+        def show_snake():
+            print("----- Snake -----")
+            for segment in s.get_body():
+                print(segment.get_pos())
+            print("===== Snake =====")
+            print("----- Food -----")
+            print(s.food.get_pos())
+            print("===== Food =====")
+
+        while(s.cli()):
+            s.move()
+            show_snake()
+
+
 
 class TestPlayground(TestCase):
     def test_init(self):

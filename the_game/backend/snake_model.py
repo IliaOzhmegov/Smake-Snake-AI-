@@ -101,6 +101,24 @@ class Snake(object):
         self.pg = Playground()
         self.borders = self.pg.borders
         self.food = Food()
+        self.food.change_pos(self.get_body(), self.pg)
+
+    def cli(self):
+        command = input("Input your command (h/j/k/l) or (q for quitting):")
+
+        if command == "h":
+            self.turn("lt")
+        elif command == "j":
+            self.turn("dn")
+        elif command == "k":
+            self.turn("up")
+        elif command == "l":
+            self.turn("rt")
+        elif command == "q":
+            return False
+        else:
+            pass
+        return True
 
     def __change_food_pos(self):
         self.food.change_pos(self.get_body(), self.pg)
