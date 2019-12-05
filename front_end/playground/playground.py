@@ -94,8 +94,12 @@ class ForeGround(object):
         self.foreground = pygame.Surface(self.surface.get_size())
         self.foreground.set_colorkey((0, 0, 0))
 
-        self.foo_x = 0
-        self.foo_y = 0
+        self.foo_x = width // 10
+        self.foo_y = height // 10
+
+    def change_foo(self, dfoo):
+        self.foo_x += dfoo[0]
+        self.foo_y += dfoo[1]
 
     def draw_foo(self):
         # self.foo_x += 1
@@ -108,12 +112,13 @@ class ForeGround(object):
         #     self.foo_y = 0
         #     self.foo_y += random.randint(0, 50)
 
+        self.foreground.window_screen.fill(0)
         pygame.draw.circle(self.foreground, self.colour,
-                           (0, 0),
+                           (self.foo_x, self.foo_y),
                            self.psize // 2)
         self.foreground = self.foreground.convert_alpha()
-        self.window_screen.blit(self.foreground, (self.x_pos + self.foo_x,
-                                                  self.y_pos + self.foo_y))
+        self.window_screen.blit(self.foreground,
+                                (self.x_pos, self.y_pos))
 
 
 class Cell(object):

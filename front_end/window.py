@@ -45,6 +45,9 @@ class Window(object):
 
         self.play_ground.draw_background()
 
+        dfoo_x = 0
+        dfoo_y = 0
+
         running = True
         while running:
             for event in pygame.event.get():
@@ -53,8 +56,21 @@ class Window(object):
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         running = False
+                    elif event.key == pygame.K_h:
+                        dfoo_x = -3
+                        dfoo_y = 0
+                    elif event.key == pygame.K_j:
+                        dfoo_x = 0
+                        dfoo_y = 3
+                    elif event.key == pygame.K_k:
+                        dfoo_x = 0
+                        dfoo_y = -3
+                    elif event.key == pygame.K_l:
+                        dfoo_x = 3
+                        dfoo_y = 0
 
             self.info_ground.draw_tech_info()
+            self.play_ground.foreground.change_foo((dfoo_x, dfoo_y))
             self.play_ground.draw_foo()
             pygame.display.flip()
 
