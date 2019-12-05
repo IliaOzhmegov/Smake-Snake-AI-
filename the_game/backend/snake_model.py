@@ -126,6 +126,9 @@ class Snake(object):
     def get_body(self):
         return self.body
 
+    def get_body_list(self):
+        return [segment.get_pos() for segment in self.get_body()]
+
     def __move_body(self):  # TODO: it must be a private method
         self.body.insert(0, self.position)
 
