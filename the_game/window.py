@@ -45,7 +45,8 @@ def render():
     for segment in snake_body:
         x_pos = get_pos_on_screen(segment[1])
         y_pos = get_pos_on_screen(segment[0])
-        pygame.draw.circle(screen, GREEN, [x_pos, y_pos], scale_coef // 2, 0)
+        pygame.draw.rect(screen, GREEN, (x_pos - scale_coef //2, y_pos - scale_coef //2,
+                                         scale_coef, scale_coef))
 
     food = snake.food.get_pos()
     x_pos = get_pos_on_screen(food[1])
