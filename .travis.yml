@@ -5,6 +5,5 @@ python:
 cache: pip
 install:
       - pip install pygame
-script:
-      - py.test --cov-report term-missing --cov app -v
+script: python3 utest.py
 

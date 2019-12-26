@@ -1,9 +1,9 @@
 from unittest import TestCase
 
-from .snake_model import Snake
-from .snake_model import Position
-from .snake_model import Playground
-from .snake_model import Food
+from the_game.backend.snake_model import Snake
+from the_game.backend.snake_model import Position
+from the_game.backend.snake_model import Playground
+from the_game.backend.snake_model import Food
 
 
 class TestSnake(TestCase):
