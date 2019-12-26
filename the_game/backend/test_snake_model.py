@@ -7,6 +7,22 @@ from the_game.backend.snake_model import Playground
 from the_game.backend.snake_model import Food
 
 
+class TestGeneric(TestCase):
+    def test_list_behaviour(self):
+        my_list = []
+        [[my_list.append((j, i)) for i in range(20)] for j in range(20)]
+        my_body = [(i, 3) for i in range(10)]
+
+        list_size = len(my_list)
+        body_size = len(my_body)
+
+        for segment in my_body:
+            if segment in my_list:
+                my_list.remove(segment)
+
+        assert len(my_list) == list_size - body_size
+
+
 class TestSnake(TestCase):
     def test_init(self):
         s = Snake()
@@ -203,12 +219,14 @@ class TestFood(TestCase):
     def test_change_pos(self):
         s = Snake()
         f = Food()
-        f.change_pos(s.get_body(), s.pg)
+        f.change_pos(s.get_body())
 
-        assert f.get_pos()[0] < Playground.Size[0]
-        assert f.get_pos()[1] < Playground.Size[1]
-        assert f.get_pos()[0] >= 0
-        assert f.get_pos()[1] >= 0
+        food_pos = f.get_pos()
+
+        assert food_pos[0] < Playground.Size[0]
+        assert food_pos[1] < Playground.Size[1]
+        assert food_pos[0] >= 0
+        assert food_pos[1] >= 0
 
     def test_index_funcs(self):
         f = Food()

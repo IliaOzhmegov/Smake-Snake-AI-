@@ -1,4 +1,5 @@
 from random import randint
+import random
 
 
 class Playground(object):
@@ -31,14 +32,16 @@ class Food:
         self.rows = Playground.Size[0]
         self.cols = Playground.Size[1]
 
-    def change_pos(self, snake_body, pg):
-        set_choices = list(range(Playground.Length))
-        set_snake = [Playground.get_index(pg, i.get_pos()) for i in snake_body]
-        for segment in set_snake:
-            set_choices.remove(segment)
+    def change_pos(self, snake_body):
+        n = Playground.Size[0]
+        m = Playground.Size[1]
 
-        r_index = randint(0, len(set_choices))
-        self.position = Position(Playground.convert_index(pg, r_index))
+        choices_set = []
+        [[choices_set.append((i, j)) for j in range(m)] for i in range(n)]
+        snake_set = [seg.get_pos() for seg in snake_body]
+        [choices_set.remove(seg) for seg in snake_set]
+
+        self.position = Position(random.choice(choices_set))
 
     def get_pos(self):
         return self.position.pos
@@ -101,7 +104,7 @@ class Snake(object):
         self.pg = Playground()
         self.borders = self.pg.borders
         self.food = Food()
-        self.food.change_pos(self.get_body(), self.pg)
+        self.food.change_pos(self.get_body())
 
     def cli(self):
         command = input("Input your command (h/j/k/l) or (q for quitting):")
@@ -121,7 +124,7 @@ class Snake(object):
         return True
 
     def __change_food_pos(self):
-        self.food.change_pos(self.get_body(), self.pg)
+        self.food.change_pos(self.get_body())
 
     def get_body(self):
         return self.body
