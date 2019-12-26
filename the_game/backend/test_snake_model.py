@@ -1,4 +1,5 @@
 from unittest import TestCase
+import unittest
 
 from the_game.backend.snake_model import Snake
 from the_game.backend.snake_model import Position
@@ -151,7 +152,7 @@ class TestSnake(TestCase):
         n_moves_to('lt', 5)
 
     def test_wall_collision(self):
-        s = Snake(length=20)
+        s = Snake()
 
         x_shift = Playground.Size[1] // 2
         y_shift = Playground.Size[0] // 2
@@ -164,6 +165,7 @@ class TestSnake(TestCase):
 
         n_moves_to('up', 100)
 
+    @unittest.skip("Requires manual driving")
     def test_snake_main(self):
         s = Snake()
 
@@ -179,7 +181,6 @@ class TestSnake(TestCase):
         while(s.cli()):
             s.move()
             show_snake()
-
 
 
 class TestPlayground(TestCase):
@@ -202,7 +203,7 @@ class TestFood(TestCase):
     def test_change_pos(self):
         s = Snake()
         f = Food()
-        f.change_pos(s.get_body())
+        f.change_pos(s.get_body(), s.pg)
 
         assert f.get_pos()[0] < Playground.Size[0]
         assert f.get_pos()[1] < Playground.Size[1]
