@@ -1,15 +1,5 @@
-####
-
-from front_end import window
+from the_game.frontend.window import Window
 
 
-####
-
-
-def main():
-    window.Window().run()
-    print("ffffffffffffffffffffffffffffffffff")
-
-
-if __name__ == "__main__":
-    main()
+w = Window()
+w.run()
