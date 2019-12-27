@@ -1,5 +1,7 @@
 # Smake (Smart Snake or Snake-AI)
 [![Travis build status](https://travis-ci.org/ElijahOzhmegov/Smake-Snake-AI-.svg?branch=master)](https://travis-ci.org/ElijahOzhmegov/Smake-Snake-AI-)
+[![Build status](https://ci.appveyor.com/api/projects/status/k9km8fyluwwbox57?svg=true)](https://ci.appveyor.com/project/ElijahOzhmegov/smake-snake-ai)
+
 
 ### Sonarcloud
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ElijahOzhmegov_Smake-Snake-AI-&metric=alert_status)](https://sonarcloud.io/dashboard?id=ElijahOzhmegov_Smake-Snake-AI-)
