@@ -12,4 +12,4 @@ install:
 - pip install pygame
 
 test_script:
-- python utest.py
+- python3 utest.py
