@@ -16,7 +16,7 @@ class Window(object):
         pygame.init()
         self.screen = pygame.display.set_mode(Window.SCREEN_SIZE)
         pygame.display.set_caption('Press ESC to quit')
-        self.fps = pygame.time.Clock()
+        self.fps_clocker = pygame.time.Clock()
         self.paused = False
 
         # Snake
@@ -51,7 +51,7 @@ class Window(object):
         pygame.draw.circle(self.screen, Window.RED, [x_pos, y_pos], self.scale_coef // 2, 0)
 
         pygame.display.update()
-        self.fps.tick(self.FPS)
+        self.fps_clocker.tick(self.FPS)
 
     def __cycle(self):
         while True:
