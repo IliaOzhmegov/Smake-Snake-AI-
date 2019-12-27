@@ -9,7 +9,7 @@ environment:
 build: off
 
 install:
-- pip3 install pygame
+- pip install pygame
 
 test_script:
-- python3 utest.py
+- python utest.py
