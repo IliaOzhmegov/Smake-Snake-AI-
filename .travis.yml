@@ -4,10 +4,8 @@ python:
     - "3.7"
 cache: pip
 install:
-      - pip install pygame
+      - pip install pygame codecov
 script: python3 utest.py
 
-before_install:
-  pip install codecov
 after_success:
-  codecov
+  - codecov -t ad7839e9-e312-4c4a-b8f4-08675f449dea
