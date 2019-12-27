@@ -7,3 +7,7 @@ install:
       - pip install pygame
 script: python3 utest.py
 
+before_install:
+  pip install codecov
+after_success:
+  codecov
