@@ -3,38 +3,38 @@ import random
 
 
 class Playground(object):
-    Size = (20, 20)
-    Rows = Size[0]
-    Cols = Size[1]
-    Length = Rows * Cols
+    size = (20, 20)
+    rows = size[0]
+    cols = size[1]
+    length = rows * cols
 
-    def __init__(self, size=Size):
-        self.size = size
-        self.borders = [(-1, i) for i in range(self.size[1])]        # top
-        self.borders += [(size[0], i) for i in range(self.size[1])]  # bottom
-        self.borders += [(i, -1) for i in range(self.size[0])]       # left
-        self.borders += [(i, size[0]) for i in range(self.size[0])]  # right
+    def __init__(self, size=size):
+        self.dim = size
+        self.borders = [(-1, i) for i in range(self.dim[1])]        # top
+        self.borders += [(size[0], i) for i in range(self.dim[1])]  # bottom
+        self.borders += [(i, -1) for i in range(self.dim[0])]       # left
+        self.borders += [(i, size[0]) for i in range(self.dim[0])]  # right
 
     def convert_index(self, ind):  # TODO: ind starts with 0
-        rows = ind // self.size[0]
-        cols = ind % self.size[1]
+        rows = ind // self.dim[0]
+        cols = ind % self.dim[1]
         return rows, cols
 
     def get_index(self, pos):
         rows = pos[0]
         cols = pos[1]
-        return rows*self.Cols + cols
+        return rows * self.cols + cols
 
 
 class Food:
     def __init__(self):
         self.position = Position((0, 0))
-        self.rows = Playground.Size[0]
-        self.cols = Playground.Size[1]
+        self.rows = Playground.size[0]
+        self.cols = Playground.size[1]
 
     def change_pos(self, snake_body):
-        n = Playground.Size[0]
-        m = Playground.Size[1]
+        n = Playground.size[0]
+        m = Playground.size[1]
 
         choices_set = []
         [[choices_set.append((i, j)) for j in range(m)] for i in range(n)]
@@ -94,7 +94,7 @@ class Snake(object):
     self_collision = "Injuring itself"
     wall_collision = "Wall collision"
 
-    def __init__(self, length=4, position=Playground.Size):
+    def __init__(self, length=4, position=Playground.size):
         self.position = Position(position) / 2
         self.speed = Direction()
 

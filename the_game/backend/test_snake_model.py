@@ -26,7 +26,7 @@ class TestGeneric(TestCase):
 class TestSnake(TestCase):
     def test_init(self):
         s = Snake()
-        assert s.position.pos == (Playground.Size[0] / 2, Playground.Size[1] / 2)
+        assert s.position.pos == (Playground.size[0] / 2, Playground.size[1] / 2)
 
     def test_get_speed_and_turn(self):
         s = Snake()
@@ -60,8 +60,8 @@ class TestSnake(TestCase):
     def test_move(self):
         s = Snake()
 
-        x_shift = Playground.Size[1] // 2
-        y_shift = Playground.Size[0] // 2
+        x_shift = Playground.size[1] // 2
+        y_shift = Playground.size[0] // 2
 
         def move_n_cells(n, dest_x, dest_y):
             for i in range(1, n):
@@ -75,19 +75,19 @@ class TestSnake(TestCase):
         move_n_cells(n, x_shift, 0)
 
         s.turn('rt')
-        move_n_cells(n, Playground.Size[0] - 1, 0)
+        move_n_cells(n, Playground.size[0] - 1, 0)
 
         s.turn('dn')
-        move_n_cells(n, Playground.Size[0] - 1, Playground.Size[0] - 1)
+        move_n_cells(n, Playground.size[0] - 1, Playground.size[0] - 1)
 
         s.turn('lt')
-        move_n_cells(n, 0, Playground.Size[0] - 1)
+        move_n_cells(n, 0, Playground.size[0] - 1)
 
     def test_get_body(self):
         s = Snake()
 
-        x_shift = Playground.Size[1] // 2
-        y_shift = Playground.Size[0] // 2
+        x_shift = Playground.size[1] // 2
+        y_shift = Playground.size[0] // 2
 
         def print_body(s):
             print('----------')
@@ -154,8 +154,8 @@ class TestSnake(TestCase):
     def test_self_collision(self):
         s = Snake(length=10)
 
-        x_shift = Playground.Size[1] // 2
-        y_shift = Playground.Size[0] // 2
+        x_shift = Playground.size[1] // 2
+        y_shift = Playground.size[0] // 2
 
         def n_moves_to(di, n):
             s.turn(di)
@@ -170,8 +170,8 @@ class TestSnake(TestCase):
     def test_wall_collision(self):
         s = Snake()
 
-        x_shift = Playground.Size[1] // 2
-        y_shift = Playground.Size[0] // 2
+        x_shift = Playground.size[1] // 2
+        y_shift = Playground.size[0] // 2
 
         def n_moves_to(di, n):
             s.turn(di)
@@ -223,8 +223,8 @@ class TestFood(TestCase):
 
         food_pos = f.get_pos()
 
-        assert food_pos[0] < Playground.Size[0]
-        assert food_pos[1] < Playground.Size[1]
+        assert food_pos[0] < Playground.size[0]
+        assert food_pos[1] < Playground.size[1]
         assert food_pos[0] >= 0
         assert food_pos[1] >= 0
 
@@ -234,7 +234,7 @@ class TestFood(TestCase):
 
         point1 = (1, 1)
         index1 = Playground.get_index(p, point1)
-        assert index1 == (p.Rows + 2) - 1
+        assert index1 == (p.rows + 2) - 1
         assert Playground.convert_index(p, index1) == point1
 
 
