@@ -61,11 +61,9 @@ class TestSnake(TestCase):
         s = Snake()
 
         x_shift = Playground.size[1] // 2
-        y_shift = Playground.size[0] // 2
 
         def move_n_cells(n, dest_x, dest_y):
-            for i in range(1, n):
-                s.move()
+            [s.move() for _ in range(1, n)]
 
             assert s.get_position() == (dest_y, dest_x)
 
@@ -121,8 +119,7 @@ class TestSnake(TestCase):
         s2.move()
 
         s2.turn('lt')
-        for i in range(2):
-            s2.move()
+        [s2.move() for _ in range(2)]
 
         s2_body = s2.get_body()
         assert s2_body[0].pos == (-1 + y_shift, -2 + x_shift)
@@ -150,11 +147,10 @@ class TestSnake(TestCase):
         s = Snake()
 
         x_shift = Playground.size[1] // 2
-        y_shift = Playground.size[0] // 2
 
         def n_moves_to(di, n):
             s.turn(di)
-            for i in range(n):
+            for _ in range(n):
                 if s.move() == Snake.wall_collision:
                     assert s.position.get_pos() == (0, x_shift)
 
@@ -208,7 +204,7 @@ class TestFood(TestCase):
         assert food_pos[1] >= 0
 
     def test_index_funcs(self):
-        f = Food()
+        Food()
         p = Playground()
 
         point1 = (1, 1)
