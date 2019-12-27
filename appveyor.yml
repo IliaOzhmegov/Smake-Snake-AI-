@@ -9,7 +9,7 @@ environment:
 build: off
 
 install:
-- pip install tox pygame
+- pip3 install pygame
 
 test_script:
-- tox
+- python3 utest.py
