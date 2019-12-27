@@ -135,7 +135,7 @@ class TestSnake(TestCase):
 
         def n_moves_to(di, n):
             s.turn(di)
-            for i in range(n):
+            for _ in range(n):
                 if s.move() == Snake.self_collision:
                     assert s.position.get_pos() == (2 + y_shift, 1 + x_shift)
 

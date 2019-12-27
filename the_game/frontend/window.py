@@ -21,7 +21,7 @@ class Window(object):
 
         # Snake
         self.snake = snake_model.Snake()
-        self.scale_coef = Window.WIDTH // self.snake.pg.Cols
+        self.scale_coef = Window.WIDTH // self.snake.pg.cols
 
         # frames per second
         self.FPS = 30
@@ -53,6 +53,21 @@ class Window(object):
         pygame.display.update()
         self.fps_clocker.tick(self.FPS)
 
+    def __key_handler(self, pressed_key):
+        if pressed_key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+        elif pressed_key == pygame.K_SPACE:
+            self.paused = not self.paused
+        elif pressed_key == pygame.K_h:
+            self.snake.turn("lt")
+        elif pressed_key == pygame.K_j:
+            self.snake.turn("dn")
+        elif pressed_key == pygame.K_k:
+            self.snake.turn("up")
+        elif pressed_key == pygame.K_l:
+            self.snake.turn("rt")
+
     def __cycle(self):
         while True:
             for event in pygame.event.get():
@@ -60,19 +75,7 @@ class Window(object):
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_ESCAPE:
-                        pygame.quit()
-                        sys.exit()
-                    elif event.key == pygame.K_SPACE:
-                        self.paused = not self.paused
-                    elif event.key == pygame.K_h:
-                        self.snake.turn("lt")
-                    elif event.key == pygame.K_j:
-                        self.snake.turn("dn")
-                    elif event.key == pygame.K_k:
-                        self.snake.turn("up")
-                    elif event.key == pygame.K_l:
-                        self.snake.turn("rt")
+                    self.__key_handler(event.key)
 
             dt = self.clock.tick()
             if not self.paused:
