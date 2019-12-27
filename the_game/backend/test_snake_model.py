@@ -89,12 +89,6 @@ class TestSnake(TestCase):
         x_shift = Playground.size[1] // 2
         y_shift = Playground.size[0] // 2
 
-        def print_body(s):
-            print('----------')
-            for segment in s.get_body():
-                print(segment.pos)
-            print('==========')
-
         def move_snake_by_straight(n, dest_x, dest_y, direction=(-1, 0), print_flag=False):
             for i in range(1, n+1):
                 s.move()
@@ -135,21 +129,6 @@ class TestSnake(TestCase):
         assert s2_body[1].pos == (-1 + y_shift, -1 + x_shift)
         assert s2_body[2].pos == (-1 + y_shift, 0 + x_shift)
         assert s2_body[3].pos == (0 + y_shift, 0 + x_shift)
-
-
-
-        def foo(s):
-            s_body = s.get_body()
-            i = 0
-            for cell in s_body:
-                assert cell.pos == (i, 0)
-                i += 1
-
-            s.body.insert(0, Position((-1, 0)))
-            s.body.pop()
-            s.body.append(Position((5, 0)))
-            for cell in s.get_body():
-                print(cell.pos)
 
     def test_self_collision(self):
         s = Snake(length=10)

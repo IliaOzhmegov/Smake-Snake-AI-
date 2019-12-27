@@ -52,10 +52,10 @@ class Direction:
     dn = (1, 0)
     lt = (0, -1)
     rt = (0, 1)
-    Direction = {'up': up, 'dn': dn, 'lt': lt, 'rt': rt}
+    get_direction = {'up': up, 'dn': dn, 'lt': lt, 'rt': rt}
 
     def __init__(self, direc='up'):
-        self.dir = Direction.Direction[direc]
+        self.dir = Direction.get_direction[direc]
 
     def __add__(self, other):
         return self.dir[0] + other.dir[0], self.dir[1] + other.dir[1]
@@ -120,6 +120,7 @@ class Snake(object):
         elif command == "q":
             return False
         else:
+            # for the future
             pass
         return True
 
