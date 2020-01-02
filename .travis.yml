@@ -6,21 +6,22 @@ python:
     - "3.6"
     - "3.7"
 cache: pip
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-install:
-      - pip install pygame codecov
-
 # for codecoverage on codeclimate.com
 env:
   global:
-    - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
-    - CODECLIMATE_REPO_TOKEN=[token]
-    - CC_TEST_REPORTER_ID=[id]
+    - CC_TEST_REPORTER_ID=2bf33a37d55967498550f43835cf2b4aec206dc17bcb07786b82ed6f9bf83746
+before_script:
+      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - chmod +x ./cc-test-reporter
+      - ./cc-test-reporter before-build
+install:
+      - pip install pygame codecov
+
 script:
   - coverage run utest.py
 
 # Push the results back to codecov
 after_success:
   - codecov
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
