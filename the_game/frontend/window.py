@@ -41,14 +41,16 @@ class Window(object):
         for segment in snake_body:
             x_pos = self.__get_pos_on_screen(segment[1])
             y_pos = self.__get_pos_on_screen(segment[0])
-            pygame.draw.rect(self.screen, Window.GREEN, (x_pos - self.scale_coef //2,
-                                                         y_pos - self.scale_coef //2,
-                                                         self.scale_coef, self.scale_coef))
+            pygame.draw.rect(self.screen, Window.GREEN,
+                             (x_pos - self.scale_coef // 2,
+                              y_pos - self.scale_coef // 2,
+                              self.scale_coef, self.scale_coef))
 
         food = self.snake.food.get_pos()
         x_pos = self.__get_pos_on_screen(food[1])
         y_pos = self.__get_pos_on_screen(food[0])
-        pygame.draw.circle(self.screen, Window.RED, [x_pos, y_pos], self.scale_coef // 2, 0)
+        pygame.draw.circle(self.screen, Window.RED,
+                           [x_pos, y_pos], self.scale_coef // 2, 0)
 
         pygame.display.update()
         self.fps_clocker.tick(self.FPS)
@@ -82,7 +84,8 @@ class Window(object):
                 self.time_elapsed_since_last_action += dt
                 if self.time_elapsed_since_last_action > 250:
                     self.__update()
-                    self.time_elapsed_since_last_action = 0  # reset it to 0 so you can count again
+                    # reset it to 0 so you can count again
+                    self.time_elapsed_since_last_action = 0
                 self.__render()
 
     def run(self):
