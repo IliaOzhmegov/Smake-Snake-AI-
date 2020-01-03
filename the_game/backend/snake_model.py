@@ -15,7 +15,7 @@ class Playground(object):
         self.borders += [(i, -1) for i in range(self.dim[0])]       # left
         self.borders += [(i, size[0]) for i in range(self.dim[0])]  # right
 
-    def convert_index(self, ind):  # TODO: ind starts with 0
+    def convert_index(self, ind):
         rows = ind // self.dim[0]
         cols = ind % self.dim[1]
         return rows, cols
@@ -71,12 +71,12 @@ class Position:
     def __init__(self, origin=(0, 0)):
         self.pos = origin
 
-    def __add__(self, other):  # TODO: other argument always must be a Position object
+    def __add__(self, other):
         y = self.pos[0] + other.pos[0]
         x = self.pos[1] + other.pos[1]
         return Position(origin=(y, x))
 
-    def __sub__(self, other):  # TODO: other argument always must be a Position object
+    def __sub__(self, other):
         y = self.pos[0] - other.pos[0]
         x = self.pos[1] - other.pos[1]
         return Position(origin=(y, x))
