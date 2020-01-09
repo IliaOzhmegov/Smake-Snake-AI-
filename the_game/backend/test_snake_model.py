@@ -26,7 +26,7 @@ class TestGeneric(TestCase):
 class TestSnake(TestCase):
     def test_init(self):
         s = Snake()
-        assert s.position.pos == (Playground.size[0] / 2, Playground.size[1] / 2)
+        assert s.get_position() == (Playground.size[0] / 2, Playground.size[1] / 2)
 
     def test_get_speed_and_turn(self):
         s = Snake()
@@ -137,7 +137,7 @@ class TestSnake(TestCase):
             s.turn(di)
             for _ in range(n):
                 if s.move() == Snake.self_collision:
-                    assert s.position.get_pos() == (2 + y_shift, 1 + x_shift)
+                    assert s.get_position() == (2 + y_shift, 1 + x_shift)
 
         n_moves_to('rt', 2)
         n_moves_to('dn', 2)
@@ -152,7 +152,7 @@ class TestSnake(TestCase):
             s.turn(di)
             for _ in range(n):
                 if s.move() == Snake.wall_collision:
-                    assert s.position.get_pos() == (0, x_shift)
+                    assert s.get_position() == (0, x_shift)
 
         n_moves_to('up', 100)
 
@@ -166,7 +166,7 @@ class TestSnake(TestCase):
                 print(segment.get_pos())
             print("===== Snake =====")
             print("----- Food -----")
-            print(s.food.get_pos())
+            print(s.__food.get_pos())
             print("===== Food =====")
 
         while(s.cli()):

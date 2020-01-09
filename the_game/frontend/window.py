@@ -21,7 +21,7 @@ class Window(object):
 
         # Snake
         self.snake = snake_model.Snake()
-        self.scale_coef = Window.WIDTH // self.snake.pg.cols
+        self.scale_coef = Window.WIDTH // self.snake.get_allowed_space()[1]  # 1 for y-axis
 
         # frames per second
         self.FPS = 30
@@ -46,7 +46,7 @@ class Window(object):
                               y_pos - self.scale_coef // 2,
                               self.scale_coef, self.scale_coef))
 
-        food = self.snake.food.get_pos()
+        food = self.snake.get_seen_food_pos()
         x_pos = self.__get_pos_on_screen(food[1])
         y_pos = self.__get_pos_on_screen(food[0])
         pygame.draw.circle(self.screen, Window.RED,
