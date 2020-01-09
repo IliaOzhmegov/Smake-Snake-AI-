@@ -106,32 +106,8 @@ class Snake(object):
         self.food = Food()
         self.food.change_pos(self.get_body())
 
-    def cli(self):
-        command = input("Input your command (h/j/k/l) or (q for quitting):")
-
-        if command == "h":
-            self.turn("lt")
-        elif command == "j":
-            self.turn("dn")
-        elif command == "k":
-            self.turn("up")
-        elif command == "l":
-            self.turn("rt")
-        elif command == "q":
-            return False
-        else:
-            # for the future
-            pass
-        return True
-
     def __change_food_pos(self):
         self.food.change_pos(self.get_body())
-
-    def get_body(self):
-        return self.body
-
-    def get_body_list(self):
-        return [segment.get_pos() for segment in self.get_body()]
 
     def __move_body(self):  # TODO: it must be a private method
         self.body.insert(0, self.position)
@@ -153,16 +129,22 @@ class Snake(object):
             return True
         return False
 
+    def get_body(self):
+        return self.body
+
+    def get_body_list(self):
+        return [segment.get_pos() for segment in self.get_body()]
+
     def get_speed(self):
         return self.speed.dir
+
+    def get_position(self):
+        return self.position.pos
 
     def turn(self, new_dir):
         new_speed = self.speed + Direction(direc=new_dir)
         if any(new_speed) != 0:
             self.speed = Direction(direc=new_dir)
-
-    def get_position(self):
-        return self.position.pos
 
     def move(self):
         new_position = self.position + Position(self.speed.get_dir())
@@ -176,5 +158,22 @@ class Snake(object):
         self.position = new_position
         self.__move_body()
 
+    def cli(self):
+        command = input("Input your command (h/j/k/l) or (q for quitting):")
+
+        if command == "h":
+            self.turn("lt")
+        elif command == "j":
+            self.turn("dn")
+        elif command == "k":
+            self.turn("up")
+        elif command == "l":
+            self.turn("rt")
+        elif command == "q":
+            return False
+        else:
+            # for the future
+            pass
+        return True
 
 
