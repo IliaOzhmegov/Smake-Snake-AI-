@@ -95,59 +95,65 @@ class Snake(object):
     wall_collision = "Wall collision"
 
     def __init__(self, length=4, position=Playground.size):
-        self.position = Position(position) / 2
-        self.speed = Direction()
+        self.__position = Position(position) / 2
+        self.__speed = Direction()
 
-        self.length = length
-        self.body = [self.position + Position((i, 0)) for i in range(self.length)]
+        self.__length = length
+        self.__body = [self.__position + Position((i, 0)) for i in range(self.__length)]
 
-        self.pg = Playground()
-        self.borders = self.pg.borders
-        self.food = Food()
-        self.food.change_pos(self.get_body())
+        self.__pg = Playground()
+        self.__borders = self.__pg.borders
+        self.__food = Food()
+        self.__food.change_pos(self.get_body())
 
     def __change_food_pos(self):
-        self.food.change_pos(self.get_body())
+        self.__food.change_pos(self.get_body())
 
     def __move_body(self):  # TODO: it must be a private method
-        self.body.insert(0, self.position)
+        self.__body.insert(0, self.__position)
 
-        if self.position.get_pos() == self.food.get_pos():
+        if self.__position.get_pos() == self.__food.get_pos():
             self.__change_food_pos()
             return
 
-        self.body.pop()
+        self.__body.pop()
 
     def __is_injuring_itself(self, new_position):
-        segments = [segment.pos for segment in self.body]
+        segments = [segment.pos for segment in self.__body]
         if new_position.get_pos() in segments:
             return True
         return False
 
     def __is_colliding_wall(self, new_position):
-        if new_position.get_pos() in self.borders:
+        if new_position.get_pos() in self.__borders:
             return True
         return False
 
     def get_body(self):
-        return self.body
+        return self.__body
 
     def get_body_list(self):
         return [segment.get_pos() for segment in self.get_body()]
 
     def get_speed(self):
-        return self.speed.dir
+        return self.__speed.dir
 
     def get_position(self):
-        return self.position.pos
+        return self.__position.pos
+
+    def get_allowed_space(self):
+        return self.__pg.rows, self.__pg.rows
+
+    def get_seen_food_pos(self):
+        return self.__food.get_pos()
 
     def turn(self, new_dir):
-        new_speed = self.speed + Direction(direc=new_dir)
+        new_speed = self.__speed + Direction(direc=new_dir)
         if any(new_speed) != 0:
-            self.speed = Direction(direc=new_dir)
+            self.__speed = Direction(direc=new_dir)
 
     def move(self):
-        new_position = self.position + Position(self.speed.get_dir())
+        new_position = self.__position + Position(self.__speed.get_dir())
 
         if self.__is_injuring_itself(new_position):
             return Snake.self_collision
@@ -155,7 +161,7 @@ class Snake(object):
         if self.__is_colliding_wall(new_position):
             return Snake.wall_collision
 
-        self.position = new_position
+        self.__position = new_position
         self.__move_body()
 
     def cli(self):
