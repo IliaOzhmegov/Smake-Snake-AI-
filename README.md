@@ -50,4 +50,9 @@ principles I will show the results of code analysis services.
     
 1. Law of Demeter implementation
 
+    Applying the Law of Demeter would only allow access to public 
+    methods 
+    of the class **Snake**.
+    ![imgage](docs/pics/law_of_demeter.png)
+
 
