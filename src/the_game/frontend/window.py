@@ -1,6 +1,6 @@
 import pygame
 import sys
-from the_game.backend import snake_model
+from src.the_game.backend import snake_model
 
 
 class Window(object):

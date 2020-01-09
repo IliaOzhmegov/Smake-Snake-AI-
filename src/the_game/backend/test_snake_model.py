@@ -1,10 +1,9 @@
 from unittest import TestCase
 import unittest
 
-from the_game.backend.snake_model import Snake
-from the_game.backend.snake_model import Position
-from the_game.backend.snake_model import Playground
-from the_game.backend.snake_model import Food
+from src.the_game.backend.snake_model import Snake
+from src.the_game.backend.snake_model import Playground
+from src.the_game.backend.snake_model import Food
 
 
 class TestGeneric(TestCase):

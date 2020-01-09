@@ -24,7 +24,8 @@ Should I add some text? I think Badges speaks for itself, but I should make sure
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ElijahOzhmegov_Smake-Snake-AI-&metric=sqale_index)](https://sonarcloud.io/dashboard?id=ElijahOzhmegov_Smake-Snake-AI-)
 
 ### 2.2 CodeClimate
-Travis-CI reports to CodeClimate test coverage evaluation.
+Travis-CI service after the unit tests sends 
+a report to CodeClimate.com about test coverage.
 Details can be found in **travis.yml** file.
 
 <a href="https://codeclimate.com/github/ElijahOzhmegov/Smake-Snake-AI-/maintainability"><img src="https://api.codeclimate.com/v1/badges/b1ee1d632109fd5ab639/maintainability" /></a>
@@ -46,7 +47,7 @@ principles I will show the results of code analysis services.
 
     This principle can be shown via the following badges ([![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ElijahOzhmegov_Smake-Snake-AI-&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=ElijahOzhmegov_Smake-Snake-AI-), 
     <a href="https://codeclimate.com/github/ElijahOzhmegov/Smake-Snake-AI-/maintainability"><img src="https://api.codeclimate.com/v1/badges/b1ee1d632109fd5ab639/maintainability" /></a>), 
-    because mentioned services evaluated code complexity.
+    because mentioned services evaluate code complexity.
     
 1. Law of Demeter implementation
 
