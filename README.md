@@ -1,5 +1,21 @@
 # Smake (Smart Snake or Snake-AI)
 
+The main idea of this project is to prove that complicated Machine Learning methods 
+and tools not always allow to reach a desired goal. 
+
+The first part of this project is to build an application, which outputs a controllable 
+snake game model (in different words a well-known snake game).
+
+The second part is to connect an artificial player which will be simulated by
+a simple NN or a simple mathematical model.
+
+And the first part of the project is finished in terms of the small university project, 
+the main idea of the pet project to make acquentece with some topics of Software engineering.
+
+![video](https://thumbs.gfycat.com/BadHandmadeAntipodesgreenparakeet-size_restricted.gif)
+
+----
+
 Travis-CI:
 
 [![Travis build status](https://travis-ci.org/ElijahOzhmegov/Smake-Snake-AI-.svg?branch=master)](https://travis-ci.org/ElijahOzhmegov/Smake-Snake-AI-)
