@@ -1,6 +1,8 @@
 # Smake (Smart Snake or Snake-AI)
 Simple NN plays in snake game.
 
+![Codewarrior Profile Badge](https://www.codewars.com/users/ElijahOzhmegov/badges/small)
+
 [![Travis build status](https://travis-ci.org/ElijahOzhmegov/Smake-Snake-AI-.svg?branch=master)](https://travis-ci.org/ElijahOzhmegov/Smake-Snake-AI-)
 [![Build status](https://ci.appveyor.com/api/projects/status/k9km8fyluwwbox57?svg=true)](https://ci.appveyor.com/project/ElijahOzhmegov/smake-snake-ai)
 [![codecov](https://codecov.io/gh/ElijahOzhmegov/Smake-Snake-AI-/branch/master/graph/badge.svg)](https://codecov.io/gh/ElijahOzhmegov/Smake-Snake-AI-)
