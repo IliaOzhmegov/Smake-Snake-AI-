@@ -200,6 +200,9 @@ tests by understandable reasons. Only the snake model
 was covered. 
 [test_snake_model.py](tests/the_game/backend/test_snake_model.py)
 
+## 6. Continuous Delivery/Integration
+
+
 ### CI/CD
 Travis-CI service after the unit tests sends 
 a report to CodeClimate.com about test coverage.
