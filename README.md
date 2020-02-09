@@ -12,8 +12,7 @@ a simple NN or a simple mathematical model.
 And the first part of the project was finished in terms of the small university project, 
 the main idea of the pet project is to make acquaintance with some topics of Software engineering.
 
-[//]:#
-![video](https://thumbs.gfycat.com/BadHandmadeAntipodesgreenparakeet-size_restricted.gif)
+[//]:#![video](https://thumbs.gfycat.com/BadHandmadeAntipodesgreenparakeet-size_restricted.gif)
 
 ----
 
@@ -177,7 +176,7 @@ and PEP Conventions.
    
 [CCD Cheatsheet](https://user-images.githubusercontent.com/35653122/51113192-86f8d880-1801-11e9-90ad-88dd58854a18.png)
 
-
+## 4. Build Management with PyGradle and Gradle
 
 ### CI/CD
 Travis-CI service after the unit tests sends 

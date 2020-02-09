@@ -1,0 +1,115 @@
+> Task :assemble UP-TO-DATE
+> Task :check UP-TO-DATE
+
+> Task :pythonRuntime
+Installing virtualenv
+Collecting virtualenv
+  Using cached https://files.pythonhosted.org/packages/05/f1/2e07e8ca50e047b9cc9ad56cf4291f4e041fa73207d000a095fe478abf84/virtualenv-16.7.9-py2.py3-none-any.whl
+Installing collected packages: virtualenv
+Successfully installed virtualenv-16.7.9
+Creating a virtual environment
+Using base prefix '/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7'
+New python executable in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/bin/python
+Installing setuptools, pip, wheel...
+done.
+
+> Task :pythonDependencies
+Installing dependencies in requirements.txt true 
+Requirement already satisfied: pygame>=1.9.6 in ./build/virtualenv/lib/python3.7/site-packages (from -r requirements.txt (line 1)) (1.9.6)
+Downloading dependencies to /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/libs
+Collecting pygame>=1.9.6
+  Using cached pygame-1.9.6-cp37-cp37m-macosx_10_11_intel.whl (4.9 MB)
+Installing collected packages: pygame
+Successfully installed pygame-1.9.6
+
+> Task :pythonTest
+Unit testing (pytest only)
+Requirement already satisfied: pytest in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (5.3.2)
+Requirement already satisfied: pytest-cov in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (2.8.1)
+Requirement already satisfied: py>=1.5.0 in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from pytest) (1.8.1)
+Requirement already satisfied: packaging in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from pytest) (20.0)
+Requirement already satisfied: importlib-metadata>=0.12; python_version < "3.8" in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from pytest) (1.3.0)
+Requirement already satisfied: more-itertools>=4.0.0 in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from pytest) (8.0.2)
+Requirement already satisfied: wcwidth in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from pytest) (0.1.8)
+Requirement already satisfied: pluggy<1.0,>=0.12 in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from pytest) (0.13.1)
+Requirement already satisfied: attrs>=17.4.0 in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from pytest) (19.3.0)
+Requirement already satisfied: coverage>=4.4 in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from pytest-cov) (5.0.2)
+Requirement already satisfied: six in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from packaging->pytest) (1.13.0)
+Requirement already satisfied: pyparsing>=2.0.2 in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from packaging->pytest) (2.4.6)
+Requirement already satisfied: zipp>=0.5 in /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages (from importlib-metadata>=0.12; python_version < "3.8"->pytest) (0.6.0)
+============================= test session starts ==============================
+platform darwin -- Python 3.7.6, pytest-5.3.2, py-1.8.1, pluggy-0.13.1
+rootdir: /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-
+plugins: cov-2.8.1
+collected 11 items
+
+../../tests/the_game/backend/test_snake_model.py ......s....             [100%]
+
+=============================== warnings summary ===============================
+/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages/_pytest/junitxml.py:436
+  /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/virtualenv/lib/python3.7/site-packages/_pytest/junitxml.py:436: PytestDeprecationWarning: The 'junit_family' default value will change to 'xunit2' in pytest 6.0.
+  Add 'junit_family=legacy' to your pytest.ini file to silence this warning and make your suite compatible.
+    _issue_warning_captured(deprecated.JUNIT_XML_DEFAULT_FAMILY, config.hook, 2)
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+- generated xml file: /Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/testReports/junit-output.xml -
+
+---------- coverage: platform darwin, python 3.7.6-final-0 -----------
+Name                                                                                        Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------------------------------------------------------------
+/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/src/__init__.py                           0      0   100%
+/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/src/the_game/__init__.py                  0      0   100%
+/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/src/the_game/backend/__init__.py          0      0   100%
+/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/src/the_game/backend/snake_model.py     133     19    86%   67, 80-82, 136, 145, 148, 168-183
+/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/src/the_game/frontend/__init__.py         0      0   100%
+/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/src/the_game/frontend/window.py          72     72     0%   1-97
+/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/src/the_gamer/__init__.py                 0      0   100%
+-------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                         205     91    56%
+Coverage HTML written to dir htmlcov
+Coverage XML written to file coverage.xml
+
+=================== 10 passed, 1 skipped, 1 warning in 0.38s ===================
+
+> Task :test
+
+> Task :pythonBuild
+Building package based on setup.py
+Requirement already satisfied: wheel in ./build/virtualenv/lib/python3.7/site-packages (0.34.2)
+running bdist_wheel
+running build
+running build_py
+installing to build/bdist.macosx-10.13-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.macosx-10.13-x86_64/wheel
+creating build/bdist.macosx-10.13-x86_64/wheel/src
+copying build/lib/src/__init__.py -> build/bdist.macosx-10.13-x86_64/wheel/src
+running install_egg_info
+running egg_info
+writing Smake.egg-info/PKG-INFO
+writing dependency_links to Smake.egg-info/dependency_links.txt
+writing top-level names to Smake.egg-info/top_level.txt
+reading manifest file 'Smake.egg-info/SOURCES.txt'
+writing manifest file 'Smake.egg-info/SOURCES.txt'
+Copying Smake.egg-info to build/bdist.macosx-10.13-x86_64/wheel/Smake-1.0-py3.7.egg-info
+running install_scripts
+adding license file "LICENSE" (matched pattern "LICEN[CS]E*")
+creating build/bdist.macosx-10.13-x86_64/wheel/Smake-1.0.dist-info/WHEEL
+creating '/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-/build/python-build/Smake-1.0-py2.py3-none-any.whl' and adding 'build/bdist.macosx-10.13-x86_64/wheel' to it
+adding 'src/__init__.py'
+adding 'Smake-1.0.dist-info/LICENSE'
+adding 'Smake-1.0.dist-info/METADATA'
+adding 'Smake-1.0.dist-info/WHEEL'
+adding 'Smake-1.0.dist-info/top_level.txt'
+adding 'Smake-1.0.dist-info/RECORD'
+removing build/bdist.macosx-10.13-x86_64/wheel
+
+> Task :build
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.0.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 23s
+4 actionable tasks: 4 executed
