@@ -177,6 +177,22 @@ and PEP Conventions.
 [CCD Cheatsheet](https://user-images.githubusercontent.com/35653122/51113192-86f8d880-1801-11e9-90ad-88dd58854a18.png)
 
 ## 4. Build Management with PyGradle and Gradle
+The easiest way to use Build Management system with
+Python is [PyGradle](https://github.com/innobead/pygradle).
+It does the following things:
+* installs environment, dependencies
+* launches tests
+* builds python wheel
+* generates docs (html and xml)
+
+In current project:
+* [build.gradle](build.gradle) file has instructions to build.
+* [gradle_report.txt](gradle_report.txt) file is an output example.
+
+To have possibility to launch gradle even without IDE
+I have made a simple [bash script](launch_gradle.sh), that
+does this. 
+
 
 ### CI/CD
 Travis-CI service after the unit tests sends 
