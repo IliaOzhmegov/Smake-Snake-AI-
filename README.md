@@ -53,24 +53,26 @@ To create UML diagrams I used a PlantUML plugin in PyCharm.
 <p align="center">
   <img src="docs/umls/snake_model.png">
 </p>
+
 ### 1.2. Use Case diagram
 <p align="center">
   <img src="docs/umls/use_case_diagram.png">
 </p>
+
 ### 1.3. Activity diagram
 <p align="center">
   <img src="docs/umls/activity_diagram.png">
 </p>
 
 ## 2. Metrics
-Should I add some text? I think Badges speaks for itself, but I should make sure.
-### 2.1 Sonarcloud
 
-### 2.2 CodeClimate
-Travis-CI service after the unit tests sends 
-a report to CodeClimate.com about test coverage.
-Details can be found in **travis.yml** file.
-
+Besides the badges at the beginning of the page,
+you can find additional information about used metrics
+on the following pages:
+* [sonarcloud.io](https://sonarcloud.io/dashboard?id=ElijahOzhmegov_Smake-Snake-AI-) 
+page 
+* [codeclimate](https://codeclimate.com/github/ElijahOzhmegov/Smake-Snake-AI-) page
+* [codecov.io](https://codecov.io/gh/ElijahOzhmegov/Smake-Snake-AI-) page
 
 
 ## 3. Clean Code Development
@@ -98,3 +100,7 @@ principles I will show the results of code analysis services.
     ![imgage](docs/pics/law_of_demeter.png)
 
 
+### CI/CD
+Travis-CI service after the unit tests sends 
+a report to CodeClimate.com about test coverage.
+Details can be found in **travis.yml** file.
