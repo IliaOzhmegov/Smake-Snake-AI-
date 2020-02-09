@@ -225,3 +225,32 @@ Travis and in **appveyor.yml**, **tox.ini** for AppVeyor.
 Gradle report usually looks like on the picture below.
 ![Gradle report](docs/pics/gradle_report.png)
 
+## 7. IDE 
+
+I have used PyCharm as my IDE.
+
+I used such plugins as:
+* IdeaVim (to fasten development)
+* PlantUML (to draw UML diagrams)
+* Nyan Progress Bar (because it is fun)
+
+About my knowledge of vim, besides simple things from vimtutor, I can
+write a complex Macros (with usage increment and decrement), launch 
+shell utils regarding to the text in the editor (for example
+to show only the 10th column of a big csv file I can do this
+`:% !colomn -c 10 -t -c,` ), operate with buffers and etc.
+
+Also I used some shortcuts in the IDE:
+* Run script (**⌘R**) (there is a conflict with vim, so it can be different from default set up)
+* Debug script (**⌘D**) (there is a conflict with vim, so it can be different from default set up)
+* Commit (**⌘K**)
+* Refactor rename (**⇧F6**)
+* Preferences.. (**⌘,**)
+
+
+
+
+
+
+
+
