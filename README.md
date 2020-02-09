@@ -221,4 +221,7 @@ Travis and in **appveyor.yml**, **tox.ini** for AppVeyor.
 
 * [Travis-CI report](https://travis-ci.org/ElijahOzhmegov/Smake-Snake-AI-)
 * [AppVeyor report](https://ci.appveyor.com/project/ElijahOzhmegov/smake-snake-ai)
-* [Gradle report](docs/htmlcov/index.html)
+
+Gradle report usually looks like on the picture below.
+![Gradle report](docs/pics/gradle_report.png)
+
