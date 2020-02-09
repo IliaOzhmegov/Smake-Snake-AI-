@@ -50,11 +50,17 @@ Sonarcloud:
 ## 1. UML
 To create UML diagrams I used a PlantUML plugin in PyCharm.
 ### 1.1. Class Diagram
-![snake_model](docs/umls/snake_model.png)
+<p align="center">
+  <img src="docs/umls/snake_model.png">
+</p>
 ### 1.2. Use Case diagram
-![snake_model](docs/umls/use_case_diagram.png)
+<p align="center">
+  <img src="docs/umls/use_case_diagram.png">
+</p>
 ### 1.3. Activity diagram
-![snake_model](docs/umls/activity_diagram.png)
+<p align="center">
+  <img src="docs/umls/activity_diagram.png">
+</p>
 
 ## 2. Metrics
 Should I add some text? I think Badges speaks for itself, but I should make sure.
