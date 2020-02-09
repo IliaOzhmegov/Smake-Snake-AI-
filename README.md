@@ -200,10 +200,25 @@ tests by understandable reasons. Only the snake model
 was covered. 
 [test_snake_model.py](tests/the_game/backend/test_snake_model.py)
 
-## 6. Continuous Delivery/Integration
-wi
+## 6. Continuous Integration
+Unfortunately my project does not have delivery part at least 
+standard one like PyPI or some Python-based website. 
+So Let's assume I  deliver my project just on github 
+with all green/yellow 
+values of the badges. So that all of them were green or at 
+least yellow for such badges as test coverage.
 
-### CI/CD
+My Pipeline: 
+![pipeline](docs/pics/Pipeline.png)
+
+First of all, Travis-CI is responsible for Linux and 
+AppVeyer for Windows.
+
 Travis-CI service after the unit tests sends 
-a report to CodeClimate.com about test coverage.
-Details can be found in **travis.yml** file.
+reports to CodeClimate.com and codecov.io.
+Details can be found in **travis.yml** file for 
+Travis and in **appveyor.yml**, **tox.ini** for AppVeyor.
+
+* [Travis-CI report](https://travis-ci.org/ElijahOzhmegov/Smake-Snake-AI-)
+* [AppVeyor report](https://ci.appveyor.com/project/ElijahOzhmegov/smake-snake-ai)
+* [Gradle report](docs/htmlcov/index.html)
