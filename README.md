@@ -76,28 +76,107 @@ page
 
 
 ## 3. Clean Code Development
-To prove that in this project was used **Clean Code Development** 
-principles I will show the results of code analysis services.
+During development were used  **Clean Code Development** principles
+and PEP Conventions.
 
-1. DRY Principle implementation
+1. [Method Names and Instance Variables](https://pep8.org/#method-names-and-instance-variables):
+    Use the function naming rules: lowercase with words separated by underscores as necessary to improve readability.
+    ```python
+    def __get_pos_on_screen(self, snake_pos):
+        return snake_pos * self.scale_coef + self.scale_coef // 2
+    ```
+2. [Class Names](https://pep8.org/#class-names):
+    Class names should normally use the CapWords convention.
+    ```python
+    class Playground(object):
+        ...
+    class Food:
+        ...
+    class Direction:
+        ...
+    ```
+3. Function rules: Small, Do one thing, Use descriptive names:
+    ```python
+    def get_body(self):
+        return self.__body
+   
+    def get_body_list(self):
+        return [segment.get_pos() for segment in self.get_body()]
 
-    This badge ([![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ElijahOzhmegov_Smake-Snake-AI-&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=ElijahOzhmegov_Smake-Snake-AI-)) 
-    indicates the percent of duplicated lines.
-    Also if you check out [codeclimate page](https://codeclimate.com/github/ElijahOzhmegov/Smake-Snake-AI-) 
-    of the project, you also will see the number of duplicated lines.
+    def get_speed(self):
+        return self.__speed.dir
 
-1. SLA Principle implementation
+    def get_position(self):
+        return self.__position.pos
 
-    This principle can be shown via the following badges ([![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ElijahOzhmegov_Smake-Snake-AI-&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=ElijahOzhmegov_Smake-Snake-AI-), 
-    <a href="https://codeclimate.com/github/ElijahOzhmegov/Smake-Snake-AI-/maintainability"><img src="https://api.codeclimate.com/v1/badges/b1ee1d632109fd5ab639/maintainability" /></a>), 
-    because mentioned services evaluate code complexity.
-    
-1. Law of Demeter implementation
+    def get_allowed_space(self):
+        return self.__pg.rows, self.__pg.rows
 
-    Applying the Law of Demeter would only allow access to public 
-    methods 
-    of the class **Snake**.
-    ![imgage](docs/pics/law_of_demeter.png)
+    def get_seen_food_pos(self):
+        return self.__food.get_pos()
+    ```
+4. Source code structure: Similar function should be close
+    ```python
+    def __is_injuring_itself(self, new_position):
+        segments = [segment.pos for segment in self.__body]
+        if new_position.get_pos() in segments:
+            return True
+        return False
+
+    def __is_colliding_wall(self, new_position):
+        if new_position.get_pos() in self.__borders:
+            return True
+        return False
+
+    def get_body(self):
+        return self.__body
+
+    def get_body_list(self):
+        return [segment.get_pos() for segment in self.get_body()]
+
+    def get_speed(self):
+        return self.__speed.dir
+
+    def get_position(self):
+        return self.__position.pos
+
+    def get_allowed_space(self):
+        return self.__pg.rows, self.__pg.rows
+
+    def get_seen_food_pos(self):
+        return self.__food.get_pos()
+
+    def turn(self, new_dir):
+        new_speed = self.__speed + Direction(direc=new_dir)
+        if any(new_speed) != 0:
+            self.__speed = Direction(direc=new_dir)
+
+    def move(self):
+        new_position = self.__position + Position(self.__speed.get_dir())
+
+        if self.__is_injuring_itself(new_position):
+            return Snake.self_collision
+
+        if self.__is_colliding_wall(new_position):
+            return Snake.wall_collision
+
+        self.__position = new_position
+        self.__move_body()
+    ```
+5. [Maximum Line Length](https://pep8.org/#maximum-line-length):
+    Limit all lines to a maximum of 79 characters.
+    ```python
+    pygame.draw.rect(self.screen, Window.GREEN,
+                     (x_pos - self.scale_coef // 2,
+                      y_pos - self.scale_coef // 2,
+                      self.scale_coef, self.scale_coef))
+    ```
+   Interesting fact: Python does not have namespaces like C++ or
+   Java, so I use Constants logically attached to the class 
+   (`Window.GREEN`). PEP keeps silence in this case.
+   
+[CCD Cheatsheet](https://user-images.githubusercontent.com/35653122/51113192-86f8d880-1801-11e9-90ad-88dd58854a18.png)
+
 
 
 ### CI/CD
