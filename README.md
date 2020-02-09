@@ -201,7 +201,7 @@ was covered.
 [test_snake_model.py](tests/the_game/backend/test_snake_model.py)
 
 ## 6. Continuous Delivery/Integration
-
+wi
 
 ### CI/CD
 Travis-CI service after the unit tests sends 
