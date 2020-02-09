@@ -1,0 +1,85 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+class Playground {
+    +size: int, int
+    +rows: int
+    +cols: int
+    +length: int
+    +dim: int
+    +borders: int
+
+    +convert_index()
+    +get_index()
+}
+class Food {
+    +position: int, int
+    +rows: int
+    +cols: int
+
+    +change_pos()
+    +get_pos()
+}
+class Direction{
+    +up: int, int
+    +dn: int, int
+    +lt: int, int
+    +rt: int, int
+    +dir: int, int
+
+    -add()
+
+    +get_direction()
+    +get_dir()
+    +is_zero()
+}
+class Position{
+    +pos: int, int
+    -add()
+    -sub()
+    -truediv()
+    +get_pos()
+}
+
+
+class Snake{
+    +self_collision: String
+    +wall_collision: String
+
+    -position: Position
+    -speed: Direction
+
+    -length: int
+    -body: Position[]
+
+    -pg: Playground
+    -borders: Playground.borders
+    -food: Food
+
+    -change_food_pos()
+
+    -move_body()
+
+    -is_injuring_itself()
+    -is_colliding_wall()
+
+    +get_body()
+    +get_body_list()
+    +get_speed()
+    +get_position()
+    +get_allowed_space()
+    +get_seen_food_pos()
+
+    +turn()
+    +move()
+    +cli()
+}
+
+Food "1" *-- "1" Position
+Snake "1" *-- "1" Position
+Snake "1" *-- "4..*" Direction
+Snake "1" *-- "1" Playground
+Snake "1" *-- "1" Food
+
+@enduml

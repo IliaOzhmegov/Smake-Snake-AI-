@@ -9,9 +9,10 @@ snake game model (in different words a well-known snake game).
 The second part is to connect an artificial player which will be simulated by
 a simple NN or a simple mathematical model.
 
-And the first part of the project is finished in terms of the small university project, 
-the main idea of the pet project to make acquentece with some topics of Software engineering.
+And the first part of the project was finished in terms of the small university project, 
+the main idea of the pet project is to make acquaintance with some topics of Software engineering.
 
+[//]:#
 ![video](https://thumbs.gfycat.com/BadHandmadeAntipodesgreenparakeet-size_restricted.gif)
 
 ----
@@ -47,7 +48,13 @@ Sonarcloud:
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ElijahOzhmegov_Smake-Snake-AI-&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=ElijahOzhmegov_Smake-Snake-AI-)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ElijahOzhmegov_Smake-Snake-AI-&metric=sqale_index)](https://sonarcloud.io/dashboard?id=ElijahOzhmegov_Smake-Snake-AI-)
 ## 1. UML
-Soon
+To create UML diagrams I used a PlantUML plugin in PyCharm.
+### 1.1. Class Diagram
+![snake_model](docs/umls/snake_model.png)
+### 1.2. Use Case diagram
+![snake_model](docs/umls/use_case_diagram.png)
+### 1.3. Activity diagram
+![snake_model](docs/umls/activity_diagram.png)
 
 ## 2. Metrics
 Should I add some text? I think Badges speaks for itself, but I should make sure.

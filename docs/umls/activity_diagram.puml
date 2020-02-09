@@ -1,0 +1,16 @@
+@startuml
+
+start
+:Launch the game;
+:Initialise the game;
+while (Quit command) is (false)
+    if (Pause command) then (true)
+    else (false)
+      :Move Snake;
+    endif
+    :Render Snake;
+    :Get a command;
+endwhile (true)
+stop
+
+@enduml

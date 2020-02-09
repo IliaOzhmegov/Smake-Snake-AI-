@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor Player
+rectangle "Snake Game" {
+  Player -- (Play)
+  Player -- (Pause)
+  Player -- (Quit)
+  (Play) <-.- (Win) : extends
+  (Play) <-.- (Lose) : extends
+  (Quit) <-.- (Win) : extends
+  (Quit) <-.- (Lose) : extends
+}
+@enduml
