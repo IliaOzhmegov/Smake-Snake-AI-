@@ -12,7 +12,8 @@ a simple NN or a simple mathematical model.
 And the first part of the project was finished in terms of the small university project, 
 the main idea of the pet project is to make acquaintance with some topics of Software engineering.
 
-[//]:#![video](https://thumbs.gfycat.com/BadHandmadeAntipodesgreenparakeet-size_restricted.gif)
+[//]:#
+![video](https://thumbs.gfycat.com/BadHandmadeAntipodesgreenparakeet-size_restricted.gif)
 
 ----
 
@@ -193,6 +194,11 @@ To have possibility to launch gradle even without IDE
 I have made a simple [bash script](launch_gradle.sh), that
 does this. 
 
+## 5. Unit-Tests
+Although, the project has GUI, it was not covered by
+tests by understandable reasons. Only the snake model 
+was covered. 
+[test_snake_model.py](tests/the_game/backend/test_snake_model.py)
 
 ### CI/CD
 Travis-CI service after the unit tests sends 
