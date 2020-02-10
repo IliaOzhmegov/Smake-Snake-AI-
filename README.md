@@ -253,6 +253,10 @@ usage example below.
 
 ![dsl](https://thumbs.gfycat.com/AdorableEminentBoar-size_restricted.gif)
 
+<p align="center">
+  <img src="https://thumbs.gfycat.com/AdorableEminentBoar-size_restricted.gif">
+</p>
+
 Full version of the video is available [here](https://gfycat.com/ru/adorableeminentboar).
 
 As you can see there is used vim navigation to control the snake
