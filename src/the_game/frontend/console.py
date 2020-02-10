@@ -1,6 +1,4 @@
 import sys
-sys.path.append("/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-")
-print('\n'.join(sys.path))
 from src.the_game.frontend.console_display_utils import Colors
 from src.the_game.frontend.console_display_utils import coloured_bordered
 from src.the_game.backend import snake_model
