@@ -251,19 +251,12 @@ Also I used some shortcuts in the IDE:
 Domain Specific Language was created to control the snake. You can see
 usage example below.
 
-![dsl 1](docs/pics/dsl%201.png) Launch from Terminal
-
-![dsl 2](docs/pics/dsl%202.png) Manual display
-
-![dsl 3](docs/pics/dsl%203.png) Gameplay Screenshot 1
-
-![dsl 3](docs/pics/dsl%204.png) Gameplay Screenshot 2
-
 <p align="center">
-  <img src="https://thumbs.gfycat.com/AdorableEminentBoar-size_restricted.gif">
+  <img src="https://thumbs.gfycat.com/PolishedFrigidJumpingbean-size_restricted.gif">
 </p>
 
-Full version of the video is available [here](https://gfycat.com/ru/adorableeminentboar).
+Full version of the video is available [here](https://gfycat.com/ru/polishedfrigidjumpingbean) 
+and [here](https://gfycat.com/ru/adorableeminentboar).
 
 As you can see there is used vim navigation to control the snake
 , because I am a fan of vim. Also, there was provided opportunity to
