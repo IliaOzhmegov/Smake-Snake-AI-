@@ -250,7 +250,10 @@ Also I used some shortcuts in the IDE:
 ## 8. DSL
 Domain Specific Language was created to control the snake. You can see
 usage example below.
+
 ![dsl](https://thumbs.gfycat.com/AdorableEminentBoar-size_restricted.gif)
+
+Full version of the video is available [here](https://gfycat.com/ru/adorableeminentboar).
 
 As you can see there is used vim navigation to control the snake
 , because I am a fan of vim. Also, there was provided opportunity to
