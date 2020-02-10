@@ -251,7 +251,13 @@ Also I used some shortcuts in the IDE:
 Domain Specific Language was created to control the snake. You can see
 usage example below.
 
-![dsl](https://thumbs.gfycat.com/AdorableEminentBoar-size_restricted.gif)
+![dsl 1](docs/pics/dsl%201.png) Launch from Terminal
+
+![dsl 2](docs/pics/dsl%202.png) Manual display
+
+![dsl 3](docs/pics/dsl%203.png) Gameplay Screenshot 1
+
+![dsl 3](docs/pics/dsl%204.png) Gameplay Screenshot 2
 
 <p align="center">
   <img src="https://thumbs.gfycat.com/AdorableEminentBoar-size_restricted.gif">
