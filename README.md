@@ -247,6 +247,17 @@ Also I used some shortcuts in the IDE:
 * Refactor rename (**⇧F6**)
 * Preferences.. (**⌘,**)
 
+## 8. DSL
+Domain Specific Language was created to control the snake. You can see
+usage example below.
+![dsl](https://thumbs.gfycat.com/AdorableEminentBoar-size_restricted.gif)
+
+As you can see there is used vim navigation to control the snake
+, because I am a fan of vim. Also, there was provided opporinity to
+enter commands in lots of different ways. For example, instead of
+to push `ENTER` 11 times to reach food a player can just enter `11k`.
+In addition a player can enter series commands for instance 
+`5h k l k 23h`.
 
 
 
