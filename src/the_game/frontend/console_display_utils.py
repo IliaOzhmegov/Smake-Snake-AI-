@@ -13,7 +13,7 @@ class Colors:
     def clear():
         os.system('clear')
 
-    class fg:
+    class foreground:
         black = '\033[30m'
         red = '\033[31m'
         green = '\033[32m'
@@ -30,7 +30,7 @@ class Colors:
         pink = '\033[95m'
         lightcyan = '\033[96m'
 
-    class bg:
+    class background:
         black = '\033[40m'
         red = '\033[41m'
         green = '\033[42m'
@@ -49,7 +49,7 @@ def bordered(text, border_color):
     print(border_color, '└' + '─' * width + '┘', Colors.reset)
 
 
-def coloured_bordered(text, colour=Colors.bg.cyan):
+def coloured_bordered(text, colour=Colors.background.cyan):
     Colors.clear()
     bordered(text, colour)
     input()

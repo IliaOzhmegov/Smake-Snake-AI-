@@ -20,8 +20,9 @@ class Command:
             actions = re.findall(r'(\d*[qhjkl])', input_)
             for action in actions:
                 number = int(action[:-1]) if len(action) > 1 else 1
-                number = 1 if number == 0 else WIDTH if number > WIDTH else number
-                self.__commands.extend([action[-1] for _ in range(number)])
+                number = 1 if number == 0 else number
+                number = WIDTH if number > WIDTH else number
+                self.__commands.extend(action[-1]*number)
             if len(actions) == 0: return None
         command = self.__commands[0]
         self.__commands.pop(0)
@@ -51,9 +52,9 @@ coloured_bordered(5*EMPTY_LINE +
 
 
 def render_snake(snake_body_, food_):
-    block_colour = Colors.bg.lightgrey
-    snake_colour = Colors.bg.green
-    food_colour  = Colors.bg.red
+    block_colour = Colors.background.lightgrey
+    snake_colour = Colors.background.green
+    food_colour  = Colors.background.red
     reset = Colors.reset
 
     block = '   '
