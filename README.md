@@ -255,6 +255,9 @@ usage example below.
   <img src="https://thumbs.gfycat.com/PolishedFrigidJumpingbean-size_restricted.gif">
 </p>
 
+Gif looks worse than an original video, so below you can find the original video
+and even an old video (one of the first attempts).
+
 Full version of the video is available [here](https://gfycat.com/ru/polishedfrigidjumpingbean) 
 and [here](https://gfycat.com/ru/adorableeminentboar).
 
@@ -265,7 +268,88 @@ to push `ENTER` 11 times to reach the food a player can just enter `11k`.
 In addition a player can enter series commands for instance 
 `5h k l k 23h`.
 
+## 9. Functional Programming
 
+* Final data structures
+
+    There is tuple in my class **Direction**.
+    ```python
+    class Direction:
+        up = (-1, 0)
+        dn = (1, 0)
+        lt = (0, -1)
+        rt = (0, 1)
+    ```
+* Side effect free functions
+
+    An instance:
+    ```python
+    def command_handler(command):
+        if command in turns():
+            dir = turns()[command]
+            snake.turn(dir)
+        elif command == 'q':
+            return False
+    return True
+    ```
+
+ * The use of higher order functions
+
+    Below you can see a few artifical made examples: arg in fuction number is a tuple 
+    that consist of a callback and int variable respectively.
+     ```python
+    def number(the_number, arg):
+        return arg[0](the_number, arg[1]) if arg else the_number
+
+    def zero (arg = None): return number(0, arg)
+    def one  (arg = None): return number(1, arg)
+    def two  (arg = None): return number(2, arg)
+    def three(arg = None): return number(3, arg)
+    def four (arg = None): return number(4, arg)
+    def five (arg = None): return number(5, arg)
+    def six  (arg = None): return number(6, arg)
+    def seven(arg = None): return number(7, arg)
+    def eight(arg = None): return number(8, arg)
+    def nine (arg = None): return number(9, arg)
+
+
+    def plus      (value): return int.__add__, value
+    def minus     (value): return int.__sub__, value
+    def times     (value): return int.__mul__, value
+    def divided_by(value): return int.__floordiv__, value
+
+    assert seven(times(five())) == 35
+    assert four(plus(nine())) == 13
+    assert eight(minus(three())) == 5
+    assert six(divided_by(two())) == 3
+     ```
+
+* Functions as parameters and return values/anonymous functions
+
+    When I was at school I often had to solve equastions like this:
+    $ (a_1*x^2 + a_2^x + a_3) * x^2 + (a_4*x + a_5) * x + a_6 $
+    ```python
+    def quad(a, b, c):
+        return lambda x: (a(x) if callable(a) else a)*(x ** 2) + \
+                         (b(x) if callable(b) else b) * x + \
+                         (a(x) if callable(c) else c)
+
+    assert quad(0, 0, 3)(0) == 3
+    assert quad(quad(1, 0, 0), quad(0, 2, 0), 3)(0) == 3
+    ```
+
+* Use Closures
+    
+    ```python
+    def turns():
+        TURNS = {'h': "lt", 'j': "dn", 'k': "up", 'l': "rt"}
+
+        def nested_function():
+            return TURNS
+
+        return nested_function()
+
+    ```
 
 
 

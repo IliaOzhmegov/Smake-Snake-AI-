@@ -1,4 +1,5 @@
 import sys
+sys.path.append("/Users/elijahozhmegov/PycharmProjects/Smake-Snake-AI-")
 from src.the_game.frontend.console_display_utils import Colors
 from src.the_game.frontend.console_display_utils import coloured_bordered
 from src.the_game.backend import snake_model
@@ -6,7 +7,6 @@ from time import sleep
 import re
 
 EMPTY_LINE = "                                                           \n"
-TURNS = {'h': "lt", 'j': "dn", 'k': "up", 'l': "rt"}
 
 snake = snake_model.Snake()
 WIDTH, HEIGHT = snake.get_allowed_space()
@@ -53,7 +53,7 @@ coloured_bordered(5*EMPTY_LINE +
 
 
 def render_snake(snake_body_, food_):
-    block_colour = Colors.background.lightgrey
+    block_colour = Colors.background.blue
     snake_colour = Colors.background.green
     food_colour  = Colors.background.red
     reset = Colors.reset
@@ -73,9 +73,18 @@ def render_snake(snake_body_, food_):
     print(content)
 
 
-def command_hanlder(command):
-    if command in TURNS:
-        dir = TURNS[command]
+def turns():
+    TURNS = {'h': "lt", 'j': "dn", 'k': "up", 'l': "rt"}
+
+    def nested_function():
+        return TURNS
+
+    return nested_function()
+
+
+def command_handler(command):
+    if command in turns():
+        dir = turns()[command]
         snake.turn(dir)
     elif command == 'q':
         return False
@@ -90,6 +99,6 @@ while continue_:
     food = snake.get_seen_food_pos()
     render_snake(snake_body, food)
 
-    continue_ = command_hanlder(The_command.get_command())
+    continue_ = command_handler(The_command.get_command())
     snake.move()
 
